@@ -30,14 +30,14 @@
   })();
   </script>
 
-  <nav class="sidebar-nav" id="td-section-nav">
+  <!-- <nav class="sidebar-nav" id="td-section-nav"> 
     {% for section in site.data.toc %}
     <ul class="sidebar-nav__section">
       {% capture sectionUrl %}{{ section.url | replace: "/", "" | strip}}{% endcapture %} {% capture pageUrl %}{{
       page.url | replace: "/", "" }}{% endcapture %}
 
       <li class="sidebar-nav__section-title">
-        <!-- Toggle button -->
+ 
         <div class="toggle"  data-toggle="collapse" data-target="#section{{ forloop.index0 }}" aria-expanded="false" aria-controls="section{{forloop.index0}}"> ⇅ </div>
         <a
           href="{% if section.url %}{{ site.baseurl }}{{ linkUrlSelected }}/{{ section.url }}{% else %}{{
@@ -86,19 +86,412 @@
                         ><strong style="color: var(--color-secondary-medium); font-weight: normal;">{{ grandchild.title }}</strong></a
                       >
                       </li>
-                      {% endfor %} <!-- grandchild -->
+                      {% endfor %} 
                   </ul>
                   
-                  {% endif %} <!-- end grandchild -->
-                {% endfor %} <!-- children -->
+                  {% endif %} 
+                {% endfor %} 
               </ul> 
-              {% endif %}  <!-- end children -->
-              {% endif %}  <!-- end pageurl -->
-            {% endfor %} <!--  section.links -->
+              {% endif %} 
+              {% endif %} 
+            {% endfor %} 
           </ul>
-      {% endif %} <!--  section.links -->
+      {% endif %} 
     </li>
-  </ul> <!-- end of "sidebar-nav__section" -->
+  </ul> 
   {% endfor %}
+</nav> -->
+<nav class="sidebar-nav" id="td-section-nav">
+    
+  <ul class="sidebar-nav__section">
+       
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section0" aria-expanded="false" aria-controls="section0" style="display:inline;"> ⇅ </div>
+      <a href="/project/overview" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> 🗺 Overview
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section0">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/project/faq" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">FAQ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/installation/quick-start" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">🚀 Quick Start</a>
+          </li>
+            <!-- end pageurl -->
+          
+          <li class="sidebar-nav__section-link ">
+            <a href="/installation" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Installation ↆ</a>
+          </li>
+          <ul style="margin-bottom: 0;">
+
+                     
+            <li id="docker-ↆ">
+            <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-docker-ↆ" href="/installation/docker">Docker ↆ</a>
+            </li>
+            
+            <ul style="margin-bottom: 0;">
+                   
+                <li id="docker-extension">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-docker-extension" href="/installation/docker/docker-extension"><strong style="color: var(--color-secondary-medium); font-weight: normal;">Docker Extension</strong></a>
+                </li>
+                 <!-- grandchild -->
+            </ul>
+            
+             <!-- end grandchild -->
+             
+            <li id="github-codespaces">
+            <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-github-codespaces" href="/installation/codespaces">GitHub Codespaces</a>
+            </li>
+             <!-- end grandchild -->
+             
+            <li id="kubernetes-ↆ">
+            <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-kubernetes-ↆ" href="/installation/kubernetes">Kubernetes ↆ</a>
+            </li>
+            
+            <ul style="margin-bottom: 0;">
+                   
+                <!-- <li id="aks">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-aks" href="/installation/kubernetes/aks"><strong style="color: var(--color-secondary-medium); font-weight: normal;">AKS</strong></a>
+                </li>
+                   
+                <li id="eks">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-eks" href="/installation/kubernetes/eks"><strong style="color: var(--color-secondary-medium); font-weight: normal;">EKS</strong></a>
+                </li>
+                   
+                <li id="gke">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-gke" href="/installation/kubernetes/gke"><strong style="color: var(--color-secondary-medium); font-weight: normal;">GKE</strong></a>
+                </li>
+                   
+                <li id="helm">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-helm" href="/installation/kubernetes/helm"><strong style="color: var(--color-secondary-medium); font-weight: normal;">Helm</strong></a>
+                </li>
+                   
+                <li id="kind">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-kind" href="/installation/kubernetes/kind"><strong style="color: var(--color-secondary-medium); font-weight: normal;">KinD</strong></a>
+                </li>
+                   
+                <li id="minikube">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-minikube" href="/installation/kubernetes/minikube"><strong style="color: var(--color-secondary-medium); font-weight: normal;">Minikube</strong></a>
+                </li>
+                   
+                <li id="kubesphere">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-kubesphere" href="/installation/kubernetes/kubesphere"><strong style="color: var(--color-secondary-medium); font-weight: normal;">KubeSphere</strong></a>
+                </li> -->
+                 <!-- grandchild -->
+
+                  
+                  <ul style="margin-bottom: 0;">
+                    {% for item in site.pages | sort: "name" | alphabetical %}
+                    {% if item.type=="installation" and item.category!="integrations" and item.list=="include" and item.language == "en" -%}
+                    <li >
+                      <a class="sidebar-nav__section-link "  href="{{ site.baseurl }}{{ item.url }}"><strong style="color: var(--color-secondary-medium); font-weight: normal;">{{ item.title }}</strong></a>
+                    </li>
+                    {%endif%}
+                    {%endfor%}
+                 </ul>   
+
+                 
+            </ul>
+            
+             <!-- end grandchild -->
+             
+            <li id="linux-or-macos-ↆ">
+            <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-linux-or-macos-ↆ" href="/installation/linux-mac">Linux or macOS ↆ</a>
+            </li>
+            
+            <ul style="margin-bottom: 0;">
+                   
+                <li id="bash">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-bash" href="/installation/linux-mac/bash"><strong style="color: var(--color-secondary-medium); font-weight: normal;">Bash</strong></a>
+                </li>
+                   
+                <li id="brew">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-brew" href="/installation/linux-mac/brew"><strong style="color: var(--color-secondary-medium); font-weight: normal;">Brew</strong></a>
+                </li>
+                 <!-- grandchild -->
+            </ul>
+            
+             <!-- end grandchild -->
+             
+            <li id="windows-ↆ">
+            <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-windows-ↆ" href="/installation/windows">Windows ↆ</a>
+            </li>
+            
+            <ul style="margin-bottom: 0;">
+                   
+                <li id="scoop">
+                  <a class="sidebar-nav__section-link " id="m-overview-installation-ↆ-scoop" href="/installation/windows/scoop"><strong style="color: var(--color-secondary-medium); font-weight: normal;">Scoop</strong></a>
+                </li>
+                 <!-- grandchild -->
+            </ul>
+            
+             <!-- end grandchild -->
+           <!-- children -->
+        </ul>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
+  <ul class="sidebar-nav__section">
+     
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section1" aria-expanded="false" aria-controls="section1"> ⇅ </div>
+      <a href="/project" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> 🧑&zwj;💻 Contributing &amp; Community
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section1">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/project/community" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Community</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/project/contributing" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Contributing ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
+  <ul class="sidebar-nav__section">
+     
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section2" aria-expanded="false" aria-controls="section2"> ⇅ </div>
+      <a href="/concepts" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> 🧠 Concepts
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section2">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/concepts/architecture" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Architectural ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/concepts/logical" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Logical ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
+  <ul class="sidebar-nav__section">
+     
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section3" aria-expanded="false" aria-controls="section3"> ⇅ </div>
+      <a href="/guides" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> 📚 Guides (all)
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section3">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/configuration-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Configuring Kubernetes Infrastructure ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/events-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Managing Events with Notification Center</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/multiple-adapters" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Using Multiple Meshery Adapters</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/gitops-with-meshery" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">GitOps with Meshery</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/performance-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Using Metrics in Meshery ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/mesheryctl" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Using Meshery CLI Guides ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/troubleshooting" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Troubleshooting Guides ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/guides/upgrade" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Upgrading Meshery ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
+  <ul class="sidebar-nav__section">
+     
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section4" aria-expanded="false" aria-controls="section4"> ⇅ </div>
+      <a href="/tasks" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> ⚙️ Tasks (all)
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section4">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/tasks/infrastructure-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Infrastructure Management</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/tasks/filter-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Filter Management</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/tasks/lifecycle-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Managing Connections</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/tasks/pattern-management" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Pattern Management</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/tasks/performance/managing-performance" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Performance Management</a>
+          </li>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
+  <ul class="sidebar-nav__section">
+     
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section5" aria-expanded="false" aria-controls="section5"> ⇅ </div>
+      <a href="/extensibility" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> 🛠 Integrations and Extensions
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section5">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/api" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">APIs</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/adapters" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Adapters ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/integrations" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Integrations</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/load-generators" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Load Generators</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/providers" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Providers</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/ui" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">UI Plugins</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensions" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">🦾 Extensions ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
+  <ul class="sidebar-nav__section">
+     
+
+    <li class="sidebar-nav__section-title">
+      <!-- Toggle button -->
+      <div class="toggle" data-toggle="collapse" data-target="#section6" aria-expanded="false" aria-controls="section6"> ⇅ </div>
+      <a href="/reference" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section "> 📖 Reference
+      </a>
+
+    
+        <ul class="td-sidebar-nav__section collapse" id="section6">
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/reference/error-codes" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Error Code Reference</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/extensibility/api" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">REST &amp; GraphQL APIs ↆ</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/reference/mesheryctl" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">CLI Command Reference</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/reference/meshery-operator-crds" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Meshery Operator CRDs</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/project/releases" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Releases</a>
+          </li>
+            <!-- end pageurl -->
+           
+          <li class="sidebar-nav__section-link ">
+            <a href="/project/security-vulnerabilities" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Vulnerabilities</a>
+          </li>
+            <!-- end pageurl -->
+           <!--  section.links -->
+        </ul>
+     <!--  section.links -->
+  </li>
+</ul> <!-- end of "sidebar-nav__section" -->
+
 </nav>
 </div>
