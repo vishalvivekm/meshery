@@ -259,7 +259,7 @@ func (hc *HealthChecker) runDockerHealthChecks() error {
 	}
 	endpointParts := strings.Split(hc.context.GetEndpoint(), ":")
 	//Check whether docker daemon is running or not
-	err := exec.Command("docker", "ps").Run()
+	err := exec.Command("sudo", "docker", "ps").Run()
 	if err != nil {
 		if endpointParts[1] != "//localhost" {
 			return errors.Wrapf(err, "Meshery is not running locally, please ensure that the appropriate Docker context is selected for Meshery endpoint: %s. To list all configured contexts use `docker context ls`", hc.context.GetEndpoint())
@@ -276,7 +276,7 @@ func (hc *HealthChecker) runDockerHealthChecks() error {
 				return errors.Wrapf(err, "failed to start Docker ")
 			}
 		} else if hc.Options.PrintLogs { // warn incase of printing logs
-			log.Warn("!! Docker is not running")
+			log.Warn("!!!! Docker is not running")
 		} else { // else we're supposed to grab errors
 			return err
 		}
@@ -291,17 +291,18 @@ func (hc *HealthChecker) runDockerHealthChecks() error {
 	}
 
 	//Check for installed docker-compose on client system
-	err = exec.Command("docker-compose", "-v").Run()
+	log.Warn("Hello")
+	err = exec.Command("docker", "compose", "-v").Run()
 	if err != nil {
 		if hc.Options.IsPreRunE { // if PreRunExec we trigger self installation
-			log.Warn("!! docker-compose is not available")
+			log.Warn("!!vivek! docker-compose is not available")
 			//No auto installation of Docker-compose for windows
 			if runtime.GOOS == "windows" {
 				return errors.Wrapf(err, "please install docker-compose. Run `mesheryctl system %s` after docker-compose is installed ", hc.Options.Subcommand)
 			}
 			err = utils.InstallprereqDocker()
 			if err != nil {
-				return errors.Wrapf(err, "failed to install prerequisites. Run `mesheryctl system %s` after docker-compose is installed ", hc.Options.Subcommand)
+				return errors.Wrapf(err, "failed to instalvivekl prerequisites. Run `mesheryctl system %s` after docker-compose is installed ", hc.Options.Subcommand)
 			}
 		} else if hc.Options.PrintLogs { // warn incase of printing logs
 			log.Warn("!! docker-compose is not available")
