@@ -64,7 +64,6 @@ themeColor: red # purple, green, blue, orange, purple, grey
 fixedNav: 'true' # true or false
 
 permalink: /:year/:title/
-markdown: kramdown
 exclude: [_site, CHANGELOG.md, LICENSE, README.md, vendor, Makefile, v0.4, v0.5, v0.6]
 
 plugins:
@@ -99,12 +98,10 @@ collections:
     output: true
     permalink: reference/mesheryctl/:collection/:path
     name: mesheryctlcommands
-  models:
-    output: true  
-  # integrations:
-  #   output: true
-  #   permalink: /extensibility/:collection/:path    
-  #   name: integrations
+  integrations:
+    output: true
+    permalink: /extensibility/:collection/:path    
+    name: integrations
 
 # Defaults
 defaults:
