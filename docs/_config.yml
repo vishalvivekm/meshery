@@ -98,10 +98,12 @@ collections:
     output: true
     permalink: reference/mesheryctl/:collection/:path
     name: mesheryctlcommands
-  integrations:
+  models:
     output: true
-    permalink: /extensibility/:collection/:path    
-    name: integrations
+  # integrations:
+  #   output: true
+  #   permalink: /extensibility/:collection/:path    
+  #   name: integrations
 
 # Defaults
 defaults:
