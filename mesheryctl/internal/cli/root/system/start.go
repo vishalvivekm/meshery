@@ -322,7 +322,7 @@ func start() error {
 		// }
 
 		log.Info("Starting Meshery...")
-		start := exec.Command("docker-compose", "-f", utils.DockerComposeFile, "up", "-d")
+		start := exec.Command("docker", "compose", "-f", utils.DockerComposeFile, "up", "-d")
 		start.Stdout = os.Stdout
 		start.Stderr = os.Stderr
 
@@ -373,7 +373,7 @@ func start() error {
 		//code for logs
 		if checkFlag == 1 {
 			log.Info("Starting Meshery logging . . .")
-			cmdlog := exec.Command("docker-compose", "-f", utils.DockerComposeFile, "logs", "-f")
+			cmdlog := exec.Command("docker", "compose", "-f", utils.DockerComposeFile, "logs", "-f")
 			cmdReader, err := cmdlog.StdoutPipe()
 			if err != nil {
 				return errors.Wrap(err, utils.SystemError("failed to create stdout pipe"))
